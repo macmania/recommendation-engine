@@ -1,6 +1,6 @@
 __author__ = 'jojofabe'
 
-import nltk
+from nltk.corpus import stopwords
 import json
 
 
@@ -22,8 +22,13 @@ for data_point in results:
             subject = s
             topic = subject[subject.index('-')+2: len(subject)]
             if topic not in topics_table:
-                topics_table[topic] = [{"title":data_point['title'],
-                                       "publisher":data_point['publisher'],
+                if data_point['publisher']["name"] != '':
+                    topics_table[topic] = [{"title":data_point['title'],
+                                       "publisher":data_point['publisher']["name"],
+                                       "summary":data_point['description'],
+                                        }]
+                else:
+                    topics_table[topic] = [{"title":data_point['title'],
                                        "summary":data_point['description'],
                                         }]
             else:
@@ -32,8 +37,30 @@ for data_point in results:
                                        'summary':data_point["description"],
                                         })
 
-for i in topics_table:
-    print i
+
+'''
+We want to improve data quality here by removing words that appear the most
+frequent, the sole being is that we want to improve the sub-categorization of
+the data point
+'''
+
+
+'''
+This is the second iteration of filtering through and getting the important
+and relevant words
+
+This is the experimental part in which we try to see which words would
+yield the most pertinent information
+'''
+topics_table_nouns = {}
+for topic in topics_table:
+    topics_table_nouns[topic] = []
+    for element in topic:
+        #this extracts the noun
+        topics_table_nouns[topic].append('');
+
+
+
 
 
 
