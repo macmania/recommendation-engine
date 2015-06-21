@@ -98,26 +98,39 @@ def setUpOwnSubjectStopWords():
     for topic in topics_table_noun_only_title:
         #only limiting it to a specified length
 
-
-        all_description = [ds for ds in topics_table_noun_only_description[topic] if len(ds) > 3].join()
-        all_topics = [topics for topics in topics_table_noun_only_title[topic] if len(ds) > 3].join()
+        #might want to look into the numeric part
+        all_description = [ds for ds in topics_table_noun_only_description[topic] if len(ds) > 5].join()
+        all_topics = [topics for topics in topics_table_noun_only_title[topic] if len(ds) > 5].join()
 
 
         fdist_description = FreqDist(all_description)
         fidst_topics = FreqDist(all_topics)
+
+        ten_most_common_descr = fdist_description.most_common(10)
+        ten_most_common_topic = fdist_description.most_common(10)
+        built_topic_stop_words[topic] = [word for word,freq in ten_most_common_descr ]
+        built_topic_stop_words[topic].append([word for word, freq in ten_most_common_topic])
+
         #here we set up the top 5-10 words (we need to look into the data more to find
         #the hard margin of the good numerical value to stop, but for simplicity sake, we
         #pick 5 for now, let's see how our accuracy changes when change the most frequent words
 
 
-# this is a cool way to find
+    for topic in built_topic_stop_words:
+        print built_topic_stop_words[topic]
+        print "\n"
+
+
+# this is a cool way to find the features of the data set and how they aggregate with one another
+# might be cool to visualize, perhaps certain names appear more often - might want to look into
+# data integrity of a particular data set - gives you some statistical analysis of how data is
+# flawed
 def setUpClusteringOnWords():
     x = {}
 
-
-#figure out which is the best model, for now, we are limiting around 10 top words.
-#we're not doing the most frequent words. We're picking the 10 top words for each sub categories
-#to see which
+# set up a model in which the neighboring words are taken into consideration, this is simply
+# annotating each words to come up with the best way of adding tags, might give more
+# pertinent information on the relativeness of a particular data-set
 def setUpContextTitleDescriptionTable():
     x = {}
 
@@ -125,18 +138,19 @@ def setUpContextTitleDescriptionTable():
 #readability wise, it's much better
 def setUpStopWordsTopicDescription():
     stop_words = stopwords.words("english")
+    temp_descriptor = []
+    temp_descriptor = []
     #remove words in topics_table if they appear in stop_words
     for topic in topics_table:
         topics_table_title[topic] = []
         for element in topic:
-            #[word for word in text.split() if word not in cachedStopWords]
-            temp_descriptor = [word for word in element["description"].text() if word not in stop_words];
-            topics_table_title[topic].append(temp_descriptor)
+            for w in topic[element]:
+                temp_descriptor.append(word for word in w["description"].text() if word not in stop_words)
+
+                topics_table_title[topic].append(temp_descriptor)
 
             temp_title = [w for w in element["title"].text() if w not in stop_words]
-            topics_table_description[topic].append(temp_title)
-
-
+            topics_table_description[topic].append(temp_title) #just add the title for now
 
 '''
 This is the second iteration of filtering through and getting the important
