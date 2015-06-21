@@ -60,14 +60,27 @@ topics_table_noun_only_description = {}
 #an observation based on me <jouella>'s observation with research. As thus
 #we only care about nouns.
 def setUpNounsTopicTable():
+    all_description = ''
+    all_topics = ''
     for topic in topics_table:
-        all_description = [ds for ds in topic["description"] if len(ds) > 3].join()
-        all_topics = [topics for topics in topic["topics"] if len(ds) > 3].join()
+        for elem in topics_table[topic]:
+            if(len(elem["description"]) > 3):
+                all_description += str(elem["description"])
 
-        current_description = nltk.pos_tag(all_description)
-        #topics_table_noun_only_description[]
-        current_topic = nltk.pos_tag(all_topics)
-    # this needs more more work in setting up. 
+            if(len(elem["topics"]) > 3):
+                all_topics += str(elem["topics"])
+
+        current_description_tag = nltk.pos_tag(all_description.split())
+        topics_table_noun_only_description[topic] = [noun for noun, pos in current_description_tag if pos == 'NNP']
+        current_topic_tag = nltk.pos_tag(all_topics.split())
+        topics_table_noun_only_title[topic] = [noun for noun, pos in current_topic_tag if pos == 'NNP']
+
+    #Start print statement
+    for key in topics_table_noun_only_description:
+        print key, topics_table_noun_only_description[key], '\n'
+    #end print statement
+
+    # this needs more more work in setting up.
 
 '''
 We want to improve data quality here by removing words that appear the most
@@ -82,21 +95,25 @@ the data point
 # How much is enough words to remove?
 # Will this improve anything? Definitely questions that needs answered
 def setUpOwnSubjectStopWords():
-    for topic in topics_table:
+    for topic in topics_table_noun_only_title:
         #only limiting it to a specified length
-        all_description = [ds for ds in topic["description"] if len(ds) > 3].join()
-        all_topics = [topics for topics in topic["topics"] if len(ds) > 3].join()
+
+
+        all_description = [ds for ds in topics_table_noun_only_description[topic] if len(ds) > 3].join()
+        all_topics = [topics for topics in topics_table_noun_only_title[topic] if len(ds) > 3].join()
 
 
         fdist_description = FreqDist(all_description)
-
         fidst_topics = FreqDist(all_topics)
         #here we set up the top 5-10 words (we need to look into the data more to find
         #the hard margin of the good numerical value to stop, but for simplicity sake, we
         #pick 5 for now, let's see how our accuracy changes when change the most frequent words
 
+
+# this is a cool way to find
 def setUpClusteringOnWords():
     x = {}
+
 
 #figure out which is the best model, for now, we are limiting around 10 top words.
 #we're not doing the most frequent words. We're picking the 10 top words for each sub categories
