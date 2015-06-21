@@ -1,0 +1,50 @@
+@relation Weka
+
+
+@attribute debeau garrett sprague graham {false,true}
+@attribute Investigating the Molecular Mechanisms of Splicing-Perturbing Small Molecules with Massively Parallel Sequencing in a Myotonic Dystrophy 1 Model {false,true}
+@attribute reid daniel schlossberg marc larco nico parker bob {false,true}
+@attribute Rogue Valley Transportation District Community Perceptions of Transit {false,true}
+@attribute computerscience {false,true}
+@attribute Public Engagement with Diverse Communities in Medford [2013] {false,true}
+@attribute herrera roanel sandoval gerardo {false,true}
+@attribute arterial streets, because of their commonly accepted function of  optimizing safe and efficient traffic flow, tend to be automobiledominated  by definition. however, their role as primary linkages among  neighborhoods and regions suggests that they can serve a broader  function in the internal cohesion of cities. indeed, many communities  are now searching for ways in which arterial streets can provide walkable,  inviting, human-scale urban space while also supporting appropriate  traffic movement.  because municipal capital-project budgets tend to be severely  constrained, redesign measures must also be cost-effective and produce  clear results in the public perception of the affected streets. the purpose  of this project is to study how the design of the street cross-section can  advance these goals. specifically, what cross-sectional design strategies  most effectively create good urban space in arterial corridors?  the effort to answer this question focuses on five arterial streets that  underwent recent cross-sectional design changes aimed at improving  conditions for all users, including pedestrians, cyclists, transit riders,  drivers, business owners, and residents. the costs and benefits of each  redesign are analyzed in terms of both economics and urban design, using  before-and-after google street view images and gis data. {false,true}
+@attribute Opinion 1041 {false,true}
+@attribute debeau garrett {false,true}
+@attribute with an overall goal of facilitating outreach in minority neighborhoods, this  report describes the process behind a successful collaborative outreach project  based on bottom-up outreach strategies. {false,true}
+@attribute tanner matthew {false,true}
+@attribute reid daniel {false,true}
+@attribute margolis kathryn stormshak elizabeth {false,true}
+@attribute A Pilot Feasibility and Effectiveness Trial of the Family Check-Up Parenting Intervention with Spanish Preadolescents and Their Families: A Cultural Adaptation and Feasibility Study to Enhance Evidence-Based Intervention Research in Spain {false,true}
+@attribute reid daniel schlossberg marc {false,true}
+@attribute herrera roanel {false,true}
+@attribute university of oregon dept of planning public policy and management community planning workshop {false,true}
+@attribute myotonic dystrophy is the most common form of adult-onset muscular dystrophy and appears in two forms: myotonic dystrophy 1 (om 1) and 2 (dm2). both  diseases arc characterized by progressive muscle degeneration, myotonia, iridescent, cataracts, and in severe cases neurodcgcncration and cardiac dysfunction. both forms of myotonic dystrophy are caused by an expansion of repeat dna in distinct loci in the genome. in dm1, a ctg repeat is expanded from less than 50 repeats in normal individuals to up to several thousand repeats in dm1 patients. the molecular basis of this disease relics on the transcription of these repeats from dna into rna. small molecules that can specifically target the repeats at the dna level and inhibit their  transcription - and thus alleviate the disease symptoms - represent a prime target for the  development of therapeutics. this study investigates the capacity of two small molecules, pentamidine and actinomycin d, to reverse the molecular symptoms of dm1 through transcriptional inhibition and provides insight into their dna target specificity and potential mechanisms of action. {false,true}
+@attribute RECLAIMING URBAN SPACE: A Study of Arterial Street Redesigns {false,true}
+@attribute the purpose of this study was to gather the perceptions of regional stakeholders, such as students, municipalities, businesses, and residents about their perception of transit enhancements along the highway 99 corridor. specifically, it sought to analyze and gather the opinions and ideas about options for transit enhancements between central point and ashland. ultimately this report is to be used as a guide to assist rvtd in the preparation for an intensive planning process to make decisions on whether to pursue high capacity transit improvements in the rogue valley. {false,true}
+@attribute reid daniel schlossberg marc larco nico {false,true}
+@attribute there is strong research support for the effectiveness and feasibility of family-centered, evidence-based programs (ebps) to prevent the developmental and negative effects of youth problem behaviors. despite this support, there is a relatively low rate of disseminating existing ebps to diverse nations and cultures, and there is even less research being conducted to evaluate the existing efforts towards dissemination and uptake. youth problem behavior prevention is a burgeoning area of psychological study in spain, yet spanish psychologists do not currently utilize evidence-based prevention approaches. this study aimed to fill gaps in the research related to understanding best practices in disseminating and evaluating the dissemination of ebps to international settings and to evaluating the uptake of a family-centered ebps for use in spain to prevent problem behavior in adolescence and adulthood.      the current study utilized a pretest/posttest with a follow-up, randomized control design to conduct a pilot feasibility and effectiveness trial of a family-centered ebp proven to effectively prevent problem behavior during adolescence. seventeen pre-adolescents (ages 9-12) and their parents from the seville metropolitan area in spain were randomly assigned to receive the family check-up intervention (fcu) or waitlist-control condition. this study used a multimodal, multi-agent approach to (1) examine intervention feasibility and uptake, (2) measure trends in youth adjustment and family management practices in the study sample, (3) examine differences in youth behavior and internalizing problems, and positive parenting, limit setting, and monitoring based on intervention group assignment, and (4) measure motivation to change based on random assignment to the intervention condition. results from mixed effects repeated analysis of variance analyses indicated that the intervention group made significant improvements in conduct and internalizing problems and in parental limit setting, positive parenting, and family problem solving. these quantitative findings coupled with confirmatory qualitative themes suggest that the intervention was both effective in reducing youth adjustment problems and enhancing parenting skills and feasible when applied within the spanish cultural context. implications of culturally sensitive, community-based methods of intervention dissemination are discussed. {false,true}
+@attribute margolis kathryn {false,true}
+@attribute science {false,true}
+@attribute Selling Native Americans Through Sports {false,true}
+@attribute 15 page paper, 8 page slide presentation. {false,true}
+@attribute volume: 32 {false,true}
+@attribute physics {false,true}
+@attribute biostor {false,true}
+
+
+@data
+
+{ 5 true,10 true,16 true,24 true}
+{ 5 true,6 true,10 true,28 true}
+{ 8 true,24 true,27 true,29 true}
+{ 1 true,11 true,18 true,28 true}
+{ 3 true,17 true,20 true}
+{ 9 true,24 true,25 true,26 true}
+{ 0 true,24 true,25 true,26 true}
+{ 14 true,22 true,23 true,24 true}
+{ 13 true,14 true,22 true,28 true}
+{ 7 true,12 true,19 true,24 true}
+{ 4 true,7 true,15 true,19 true}
+{ 7 true,19 true,21 true,28 true}
+{ 2 true,7 true,19 true,24 true}
