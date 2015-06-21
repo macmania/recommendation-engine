@@ -74,25 +74,27 @@ def setUpNounsTopicTable():
     all_topics = ''
     for topic in topics_table:
         for elem in topics_table[topic]:
-            print "element:", elem
+            #print "element:", elem
             for e in elem:
                 #print e, topics_table[topic][elem]
-                '''
-                if(len(elem["description"]) > 3):
-                    all_description += str(elem["description"])
-                if(len(elem["title"]) > 3):
+                if(len(elem["summary"]) > 8):
+                    all_description += str(elem["summary"])
+                if(len(elem["title"]) > 8):
                     all_topics += str(elem["title"])
-                '''
+
             current_description_tag = nltk.pos_tag(all_description.split())
-            print current_description_tag
+
             topics_table_noun_only_description[topic] = [noun for noun, pos in current_description_tag if pos == 'NNP']
 
             current_topic_tag = nltk.pos_tag(all_topics.split())
             topics_table_noun_only_title[topic] = [noun for noun, pos in current_topic_tag if pos == 'NNP']
             #print "nouns: \t",topics_table_noun_only_title[topic]
-            time.sleep(.5)
+            #time.sleep(.5)
+            #print topics_table_noun_only_title[topic]
 
 
+    print topics_table_noun_only_description
+    print topics_table_noun_only_title
 
     #Start print statement
     '''
@@ -123,7 +125,6 @@ def setUpOwnSubjectStopWords():
         all_description = [ds for ds in topics_table_noun_only_description[topic] if len(ds) > 5].join()
         all_topics = [topics for topics in topics_table_noun_only_title[topic] if len(ds) > 5].join()
 
-
         fdist_description = FreqDist(all_description)
         fidst_topics = FreqDist(all_topics)
 
@@ -132,6 +133,9 @@ def setUpOwnSubjectStopWords():
         built_topic_stop_words[topic] = [word for word,freq in ten_most_common_descr ]
         built_topic_stop_words[topic].append([word for word, freq in ten_most_common_topic])
 
+
+    print built_topic_stop_words
+    print built_topic_stop_words
         #here we set up the top 5-10 words (we need to look into the data more to find
         #the hard margin of the good numerical value to stop, but for simplicity sake, we
         #pick 5 for now, let's see how our accuracy changes when change the most frequent words
@@ -165,13 +169,14 @@ def setUpStopWordsTopicDescription():
         topics_table_title[topic] = []
         for element in topics_table[topic]:
             for w in element:
-                print w
                 #temp_descriptor.append(word for word in w["description"].text() if word not in stop_words)
                 topics_table_title[topic].append(temp_descriptor)
 
             temp_title = [w for w in element["title"] if w not in stop_words]
-            topics_table_description[topic].append(temp_title) #just add the title for now
+            #description needs to be parsed and remove any inconsistencies - with the next lines
 
+            #topics_table_description[topic].append(temp_title) #just add the title for now
+    print  topics_table_description, topics_table_title
 '''
 This is the second iteration of filtering through and getting the important
 and relevant words
@@ -192,7 +197,17 @@ for topic in topics_table:
 '''
 methods to call to set up everything
 '''
+
+
+#setUpStopWordsTopicDescription()
 setUpNounsTopicTable()
+setUpOwnSubjectStopWords()
+
+
+print topics_table_noun_only_title
+
+
+
 #print '\n\n', topics_table_nouns
 #print topics_table_noun_only_description
 
