@@ -1,8 +1,10 @@
 __author__ = 'jojofabe'
 
 from nltk.corpus import stopwords
+from nltk import FreqDist
 import json
 import nltk
+
 from nltk import word_tokenize,sent_tokenize
 
 nltk.download('punkt')
@@ -46,6 +48,27 @@ topics_table_title = {}
 topics_table_description = {}
 
 built_topic_stop_words = {}
+built_topic_context = {} #we take the most contextual nouns of each description
+#and put tags on the context
+
+topics_table_noun_only_title = {}
+topics_table_noun_only_description = {}
+
+#setting up the nouns from the corpus, we make this assumption
+#good research papers are not opinionated, they are technical, use specified
+#words to ensure their message and findings are published successfully. This is a
+#an observation based on me <jouella>'s observation with research. As thus
+#we only care about nouns.
+def setUpNounsTopicTable():
+    for topic in topics_table:
+        all_description = [ds for ds in topic["description"] if len(ds) > 3].join()
+        all_topics = [topics for topics in topic["topics"] if len(ds) > 3].join()
+
+        current_description = nltk.pos_tag(all_description)
+        #topics_table_noun_only_description[]
+        current_topic = nltk.pos_tag(all_topics)
+    # this needs more more work in setting up. 
+
 '''
 We want to improve data quality here by removing words that appear the most
 frequent, the sole being is that we want to improve the sub-categorization of
@@ -59,10 +82,25 @@ the data point
 # How much is enough words to remove?
 # Will this improve anything? Definitely questions that needs answered
 def setUpOwnSubjectStopWords():
+    for topic in topics_table:
+        #only limiting it to a specified length
+        all_description = [ds for ds in topic["description"] if len(ds) > 3].join()
+        all_topics = [topics for topics in topic["topics"] if len(ds) > 3].join()
 
+
+        fdist_description = FreqDist(all_description)
+
+        fidst_topics = FreqDist(all_topics)
+        #here we set up the top 5-10 words (we need to look into the data more to find
+        #the hard margin of the good numerical value to stop, but for simplicity sake, we
+        #pick 5 for now, let's see how our accuracy changes when change the most frequent words
+
+def setUpClusteringOnWords():
     x = {}
 
-#figure out which is the best model
+#figure out which is the best model, for now, we are limiting around 10 top words.
+#we're not doing the most frequent words. We're picking the 10 top words for each sub categories
+#to see which
 def setUpContextTitleDescriptionTable():
     x = {}
 
