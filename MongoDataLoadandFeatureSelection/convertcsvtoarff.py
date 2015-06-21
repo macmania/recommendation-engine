@@ -3,7 +3,7 @@ import pdb
 
 
 #Variable Intialization
-filename = "reviewsinformation_task2.csv"
+filename = "reviewsinformation_task1.csv"
 ITEMS = set()
 arffFilename = filename.split(".")[0] + ".arff"
 myfile = csv.reader(open(filename,'rb'))
