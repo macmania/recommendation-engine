@@ -4,6 +4,7 @@ from nltk.corpus import stopwords
 from nltk import FreqDist
 import json
 import nltk
+import time
 
 from nltk import word_tokenize,sent_tokenize
 
@@ -18,6 +19,8 @@ with open('comp/100_comp.json') as data_file:
     data = json.load(data_file)
 
 results = data['results']
+#print results
+
 
 def setUpTopicsToDictionary():
     #loading the topics into the dictionary
@@ -27,6 +30,7 @@ def setUpTopicsToDictionary():
                 subject = s
                 topic = subject[subject.index('-')+2: len(subject)]
                 if topic not in topics_table:
+                    #print "title:", data_point['title'], '\n'
                     if data_point['publisher']["name"] != '':
                         topics_table[topic] = [{"title":data_point['title'],
                                            "publisher":data_point['publisher']["name"],
@@ -37,11 +41,17 @@ def setUpTopicsToDictionary():
                                            "summary":data_point['description'],
                                             }]
                 else:
-                     topics_table[topic].append({'title':data_point['title'],
+                    topics_table[topic].append({'title':data_point['title'],
                                            'publisher':data_point['publisher'],
                                            'summary':data_point["description"],
                                             })
 
+#temporary print, prints the description and title in the topics_table
+setUpTopicsToDictionary()
+
+#print topics_table
+#for e in topics_table:
+    #print "here", topics_table[e]
 
 
 topics_table_title = {}
@@ -64,20 +74,31 @@ def setUpNounsTopicTable():
     all_topics = ''
     for topic in topics_table:
         for elem in topics_table[topic]:
-            if(len(elem["description"]) > 3):
-                all_description += str(elem["description"])
+            print "element:", elem
+            for e in elem:
+                #print e, topics_table[topic][elem]
+                '''
+                if(len(elem["description"]) > 3):
+                    all_description += str(elem["description"])
+                if(len(elem["title"]) > 3):
+                    all_topics += str(elem["title"])
+                '''
+            current_description_tag = nltk.pos_tag(all_description.split())
+            print current_description_tag
+            topics_table_noun_only_description[topic] = [noun for noun, pos in current_description_tag if pos == 'NNP']
 
-            if(len(elem["topics"]) > 3):
-                all_topics += str(elem["topics"])
+            current_topic_tag = nltk.pos_tag(all_topics.split())
+            topics_table_noun_only_title[topic] = [noun for noun, pos in current_topic_tag if pos == 'NNP']
+            #print "nouns: \t",topics_table_noun_only_title[topic]
+            time.sleep(.5)
 
-        current_description_tag = nltk.pos_tag(all_description.split())
-        topics_table_noun_only_description[topic] = [noun for noun, pos in current_description_tag if pos == 'NNP']
-        current_topic_tag = nltk.pos_tag(all_topics.split())
-        topics_table_noun_only_title[topic] = [noun for noun, pos in current_topic_tag if pos == 'NNP']
+
 
     #Start print statement
+    '''
     for key in topics_table_noun_only_description:
         print key, topics_table_noun_only_description[key], '\n'
+    '''
     #end print statement
 
     # this needs more more work in setting up.
@@ -115,11 +136,11 @@ def setUpOwnSubjectStopWords():
         #the hard margin of the good numerical value to stop, but for simplicity sake, we
         #pick 5 for now, let's see how our accuracy changes when change the most frequent words
 
-
+'''
     for topic in built_topic_stop_words:
         print built_topic_stop_words[topic]
         print "\n"
-
+'''
 
 # this is a cool way to find the features of the data set and how they aggregate with one another
 # might be cool to visualize, perhaps certain names appear more often - might want to look into
@@ -139,17 +160,16 @@ def setUpContextTitleDescriptionTable():
 def setUpStopWordsTopicDescription():
     stop_words = stopwords.words("english")
     temp_descriptor = []
-    temp_descriptor = []
     #remove words in topics_table if they appear in stop_words
     for topic in topics_table:
         topics_table_title[topic] = []
-        for element in topic:
-            for w in topic[element]:
-                temp_descriptor.append(word for word in w["description"].text() if word not in stop_words)
-
+        for element in topics_table[topic]:
+            for w in element:
+                print w
+                #temp_descriptor.append(word for word in w["description"].text() if word not in stop_words)
                 topics_table_title[topic].append(temp_descriptor)
 
-            temp_title = [w for w in element["title"].text() if w not in stop_words]
+            temp_title = [w for w in element["title"] if w not in stop_words]
             topics_table_description[topic].append(temp_title) #just add the title for now
 
 '''
@@ -172,8 +192,12 @@ for topic in topics_table:
 '''
 methods to call to set up everything
 '''
-setUpTopicsToDictionary()
-setUpStopWordsTopicDescription()
+setUpNounsTopicTable()
+#print '\n\n', topics_table_nouns
+#print topics_table_noun_only_description
+
+
+#setUpStopWordsTopicDescription()
 
 
 
