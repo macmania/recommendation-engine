@@ -39,18 +39,19 @@ def remove_garbage(summary):
 def has_more_subjects(topic):
     list_topics = []
     if("and" in topic): #must split the two categories
-        print topic
+        print topic,'\n'
         toks = nltk.word_tokenize(topic)
         time.sleep(1.5)
-        print nltk.pos_tag(toks)
+        #print nltk.pos_tag(toks)
 
         # [(u'tissues', 'NNS'), (u'and', 'CC'), (u'organs', 'NNS')]
         # [(u'computer', 'NN'), (u'vision', 'NN'), (u'and', 'CC'), (u'pattern', 'NN'), (u'recognition', 'NN')]
-        for sub in toks:
-            if len(toks) > 4 and (toks[1][1] == 'CC' or toks[2][1] == 'CC'): #this means
+        #for i in len(toks):
+
+        if len(toks) > 4 and (toks[1][1] == 'CC' or toks[2][1] == 'CC'): #this means
                                                 # that there is conjuction
-                #try and parse this data 
-                x = 0
+                #try and parse this data
+            print toks, '\n'
 
         list_topics = topic.split("and")
 
