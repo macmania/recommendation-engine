@@ -1,0 +1,101 @@
+[nltk_data] Downloading package 'punkt' to
+[nltk_data]     /Users/jojofabe/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+human-computer interaction
+sound
+computational finance
+computation
+ide association studies
+populations and evolution
+complex variables
+.s. gov't
+computational geometry
+distributed
+disordered systems and neural networks
+mathematical software
+optimization and control
+symbolic computation
+materials science
+classical analysis and odes
+performance
+multiagent systems
+computational complexity
+nterleaved analog-to-digital converter (adc)
+data structures and algorithms
+chaotic dynamics
+numerical analysis
+statistical mechanics
+information retrieval
+logic in computer science
+instrumentation and methods for astrophysics
+machine learning
+pricing of securities
+spectral theory
+programming languages
+.h.s.
+multimedia
+neural and evolutionary computing
+cosmology and nongalactic astrophysics
+computational physics
+computer vision and pattern recognition
+atomic physics
+emerging technologies
+data analysis
+theory
+formal languages and automata theory
+chemical physics
+networking and internet architecture
+computers and society
+other computer science
+logic
+computer science and game theory
+algebraic topology
+probability
+robotics
+computation and language
+operator algebras
+learning
+genomics
+combinatorics
+risk management
+2
+symplectic geometry
+differential geometry
+artificial intelligence
+statistics theory
+metric geometry
+quantitative methods
+graphics
+strongly correlated electrons
+other statistics
+physics education
+tissues and organs
+analysis of pdes
+mm
+number theory
+category theory
+discrete mathematics
+digital libraries
+ssisted
+computational engineering
+dynamical systems
+biological physics
+neurons and cognition
+social and information networks
+adaptation and self-organizing systems
+methodology
+tranded
+physics and society
+algebraic geometry
+applications
+systems and control
+ff
+functional analysis
+fluid dynamics
+ncogene proteins c-fos
+software engineering
+information theory
+lamp techniques
+databases
+cryptography and security
+{}

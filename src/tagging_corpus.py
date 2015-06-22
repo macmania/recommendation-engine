@@ -5,6 +5,8 @@ from nltk import FreqDist
 import json
 import nltk
 import time
+from nltk.tag.hunpos import HunposTagger
+
 
 from nltk import word_tokenize,sent_tokenize
 
@@ -28,10 +30,28 @@ length_results = len(results) #number of data points
 def remove_garbage(summary):
     return summary.replace('\n\t', '')
 
+# based on the search api that Share provides, we find that there is only
+# one conjunction with the subjects - that is [* and *].
+# Since we need to save the sub-categories to get more granular results
+# with the classifier. Having more sub-categories will provide a better
+# way in delivering more data-sets for subjects.
 
 def has_more_subjects(topic):
     list_topics = []
     if("and" in topic): #must split the two categories
+        print topic
+        toks = nltk.word_tokenize(topic)
+        time.sleep(1.5)
+        print nltk.pos_tag(toks)
+
+        # [(u'tissues', 'NNS'), (u'and', 'CC'), (u'organs', 'NNS')]
+        # [(u'computer', 'NN'), (u'vision', 'NN'), (u'and', 'CC'), (u'pattern', 'NN'), (u'recognition', 'NN')]
+        for sub in toks:
+            if len(toks) > 4 and (toks[1][1] == 'CC' or toks[2][1] == 'CC'): #this means
+                                                # that there is conjuction
+                #try and parse this data 
+                x = 0
+
         list_topics = topic.split("and")
 
 
@@ -39,7 +59,7 @@ def setUpTopicsToDict():
     #loading the topics into the dictionary
     for data_point in results:
         for s in data_point['subjects']:
-            if '-' in s:
+            if "computer science" in s and '-' in s:
                 subject = s
                 topic = subject[subject.index('-')+2: len(subject)]
                 #print topic
