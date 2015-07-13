@@ -1,3 +1,4 @@
+# Status: [![Build Status](https://travis-ci.org/macmania/recommendation-engine.svg?branch=master)](https://travis-ci.org/macmania/recommendation-engine)
 ## Goal
 Make a recommendation engine that will allow users to type a few words
 then give them a list of recommendations from all of the research papers stored
